@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: wishlist
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: sulsj
+Implementation-Vendor-Id: com.sample.wishlist
+Build-Time: wo okt 14 2015 06:10:39 UTC +0000
+Build-Jdk: 1.8.0_60
+Implementation-URL: http://yaas.io/wishlist
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: SAP SE
+

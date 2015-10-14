@@ -1,0 +1,12 @@
+com\sample\wishlist\JerseyApplication.class
+com\sample\wishlist\api\generated\PagedParameters.class
+com\sample\wishlist\api\generated\WishlistsResource.class
+com\sample\wishlist\api\generated\Error.class
+com\sample\wishlist\api\generated\util\OneOfDeserializerUtility.class
+com\sample\wishlist\api\generated\YaasAwareParameters.class
+com\sample\wishlist\api\generated\ApiFeature.class
+com\sample\wishlist\api\generated\Detail.class
+com\sample\wishlist\api\generated\DefaultWishlistsResource.class
+com\sample\wishlist\api\generated\Wishlist$DescriptionOneOfDeserializer.class
+com\sample\wishlist\api\generated\WishlistItem.class
+com\sample\wishlist\api\generated\Wishlist.class
