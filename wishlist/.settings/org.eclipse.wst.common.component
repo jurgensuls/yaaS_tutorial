@@ -5,6 +5,8 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/service"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/client"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/client-support"/>
         <property name="context-root" value="wishlist"/>
         <property name="java-output-path" value="/wishlist/target/classes"/>
     </wb-module>

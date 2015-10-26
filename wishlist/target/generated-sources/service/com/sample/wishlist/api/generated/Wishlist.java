@@ -28,7 +28,7 @@ import com.sample.wishlist.api.generated.util.OneOfDeserializerUtility;
 /**
  * Generated dto.
  */
-@javax.annotation.Generated(value = "hybris", date = "Tue Oct 13 16:47:05 CEST 2015")
+@javax.annotation.Generated(value = "hybris", date = "Mon Oct 26 10:24:16 CET 2015")
 @XmlRootElement
 @JsonAutoDetect(isGetterVisibility = Visibility.NONE, getterVisibility = Visibility.NONE, setterVisibility = Visibility.NONE,
 		creatorVisibility = Visibility.NONE, fieldVisibility = Visibility.NONE)

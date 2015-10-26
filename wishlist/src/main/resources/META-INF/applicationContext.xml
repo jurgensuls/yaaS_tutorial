@@ -2,11 +2,50 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<context:component-scan base-package="com.sample.wishlist.api.generated"/>
+		<context:component-scan base-package="com.sample.wishlist.api.generated"/>
+		
+<!-- 		Reads the default properties file -->
+		<bean id="propertyConfigurer"
+			class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="classpath:/default.properties" />
+            <property name="searchSystemEnvironment" value="true" />
+		</bean>
+		
+<!-- 		Enables the authorization library -->
+		<bean id="authorizedExecutionTemplate" autowire-candidate="true" class="com.sap.cloud.yaas.servicesdk.authorization.integration.AuthorizedExecutionTemplate">
+		<constructor-arg ref="accessTokenProvider"/>
+		</bean>
+		
+<!-- 		Bypasses the URL, clientId & clientsecret -->
+		<bean id="accessTokenProvider" class="com.sap.cloud.yaas.servicesdk.authorization.cache.SimpleCachingProviderWrapper">
+			<constructor-arg>
+				<bean class="com.sap.cloud.yaas.servicesdk.authorization.protocol.ClientCredentialsGrantProvider">
+					<property name="tokenEndpointUri" value="${OAUTH2_TOKEN_ENDPOINT_URL}"/>
+					<property name="clientId" value="${CLIENT_ID}"/>
+					<property name="clientSecret" value="${CLIENT_SECRET}"/>
+				</bean>
+			</constructor-arg>
+		</bean>
+		
+<!-- 		Document repository adds metadata to the document we saves -->
+		<bean id="jsonClient" class="com.sample.wishlist.client.ClientFactory" />
+		
+<!-- 		Enable document client -->
+		<bean id="documentClient"
+			class="com.sample.wishlist.client.documentrepository.DocumentClient">
+			<constructor-arg name="baseUri">
+				<util:constant static-field="com.sample.wishlist.client.documentrepository.DocumentClient.DEFAULT_BASE_URL"/>
+			</constructor-arg>
+			<constructor-arg name="client" ref="jsonClient" />
+		</bean>				
 
 </beans>
+

@@ -35,9 +35,16 @@
 
 	<dependencies>
 		<!-- YaaS Service SDK Dependencies -->
+		
+<!-- 		Dependency to the authorization library (can be found in DevPortal)-->
 		<dependency>
 			<groupId>com.sap.cloud.yaas.service-sdk</groupId>
 			<artifactId>service-sdk-libraries</artifactId>
+			<version>${service-sdk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.yaas.service-sdk</groupId>
+			<artifactId>service-sdk-authorization</artifactId>
 			<version>${service-sdk.version}</version>
 		</dependency>
 
@@ -119,7 +126,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Testing Dependencies-->
+		<!-- Testing Dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -168,6 +175,26 @@
 					</webApp>
 				</configuration>
 			</plugin>
+
+			<!-- INSERT THE PLUGIN -->
+			<plugin>
+				<groupId>com.sap.cloud.yaas.service-sdk</groupId>
+				<artifactId>service-sdk-generator-maven-plugin</artifactId>
+				<version>${service-sdk.version}</version>
+				<executions>
+					<execution>
+						<id>Document</id>
+						<goals>
+							<goal>generate-client</goal>
+						</goals>
+						<configuration>
+							<sourceRamlUri>https://api.yaas.io/hybris/document/b2/api-console/raml/api/document.raml</sourceRamlUri>
+							<basePackage>com.sample.wishlist.client.document</basePackage>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -187,6 +214,7 @@
 										<versionRange>[${service-sdk.version},)</versionRange>
 										<goals>
 											<goal>generate-service</goal>
+											<goal>generate-client</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>

@@ -11,6 +11,7 @@
  */
 package com.sample.wishlist.api.generated;
 
+import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -33,6 +34,9 @@ public final class DefaultWishlistsResourceTest extends com.sample.wishlist.api.
 	public void testGet()
 	{
 		final WebTarget target = getRootTarget(ROOT_RESOURCE_PATH).path("");
+		
+		Invocation.Builder invocationBuilder = target.request();
+		invocationBuilder.header("hybris-tenant", "projecttutorial");
 
 		final Response response = target.request().get();
 
@@ -52,6 +56,8 @@ public final class DefaultWishlistsResourceTest extends com.sample.wishlist.api.
 
 		final Response response = target.request().post(entity);
 
+		
+		
 		Assert.assertNotNull("Response must not be null", response);
 		Assert.assertEquals("Response does not have expected response code", Status.CREATED.getStatusCode(), response.getStatus());
 	}
